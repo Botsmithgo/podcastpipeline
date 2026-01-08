@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PodcastPipeline Case Study | Zero to 50 Industry Leaders in 12 Months</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1a365d;
@@ -17,6 +20,9 @@
             --bg-alt: #f7fafc;
             --border: #e2e8f0;
             --success: #059669;
+            --ink: #0A0A0A;
+            --paper: #FEFDFB;
+            --gradient-warm: linear-gradient(135deg, #FF6B35 0%, #FF3D00 100%);
         }
         
         * {
@@ -33,11 +39,138 @@
             overflow-x: hidden;
         }
         
+        /* Header */
+        header {
+            padding: 30px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: var(--paper);
+            z-index: 100;
+            border-bottom: 2px solid var(--ink);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            color: var(--ink);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '●';
+            color: var(--accent);
+            position: absolute;
+            right: -20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-signin {
+            color: var(--ink);
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            border: 2px solid var(--ink);
+            transition: all 0.3s ease;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .nav-signin::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #7C3AED;
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .nav-signin span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-signin:hover::before {
+            left: 0;
+        }
+
+        .nav-signin:hover {
+            color: var(--paper);
+            border-color: #7C3AED;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .nav-cta {
+            background: var(--gradient-warm);
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 61, 0, 0.3);
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #1e4976 100%) !important;
             color: white !important;
-            padding: 120px 20px 80px;
+            padding: 180px 20px 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -532,8 +665,39 @@
         
         /* Responsive */
         @media (max-width: 768px) {
+            header {
+                padding: 20px 0;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                gap: 15px;
+                padding: 0 15px;
+            }
+            
+            .logo {
+                font-size: 24px;
+                flex-shrink: 0;
+            }
+            
+            .logo::after {
+                right: -15px;
+            }
+            
+            .nav-buttons {
+                gap: 8px;
+                flex-shrink: 0;
+            }
+            
+            .nav-signin,
+            .nav-cta {
+                padding: 8px 12px;
+                font-size: 11px;
+                white-space: nowrap;
+            }
+            
             .hero {
-                padding: 80px 20px 60px;
+                padding: 140px 20px 60px;
             }
             
             .stats-bar {
@@ -575,6 +739,16 @@
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">PodcastPipeline</a>
+            <div class="nav-buttons">
+                <a href="https://podcastpipeline.lovable.app" class="nav-signin" target="_blank" rel="noopener noreferrer"><span>Sign In</span></a>
+                <a href="index.html#contact" class="nav-cta">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
     <!-- Hero Section -->
     <div class="hero">
         <div class="hero-content">
