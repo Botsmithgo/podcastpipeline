@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>PodcastPipeline - Turn Your Dream Prospects Into Podcast Guests</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Stop sending ignored cold emails. Start having conversations with C-level executives who actually want to talk to you. 68% accept rate, 10x better than cold email.">
+    <meta name="keywords" content="podcast guest booking, B2B sales, cold email alternative, executive outreach, podcast marketing, lead generation">
+    <meta name="author" content="PodcastPipeline">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://podcast-pipeline.netlify.app/">
+    <meta property="og:title" content="PodcastPipeline - Turn Your Dream Prospects Into Podcast Guests">
+    <meta property="og:description" content="Stop sending ignored cold emails. Start having conversations with C-level executives who actually want to talk to you.">
+    <meta property="og:image" content="https://podcast-pipeline.netlify.app/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://podcast-pipeline.netlify.app/">
+    <meta property="twitter:title" content="PodcastPipeline - Turn Your Dream Prospects Into Podcast Guests">
+    <meta property="twitter:description" content="Stop sending ignored cold emails. Start having conversations with C-level executives who actually want to talk to you.">
+    <meta property="twitter:image" content="https://podcast-pipeline.netlify.app/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎙️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎙️</text></svg>">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "PodcastPipeline",
+      "url": "https://podcast-pipeline.netlify.app",
+      "description": "Turn your dream prospects into podcast guests. Stop sending ignored cold emails.",
+      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Sales",
+        "availableLanguage": "English"
+      },
+      "offers": {
+        "@type": "Offer",
+        "name": "Foundation Plan",
+        "price": "1997",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "1997",
+          "priceCurrency": "USD",
+          "billingIncrement": "P1M"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics (replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap');
+        
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            z-index: 999;
+            padding: 1em;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #0A0A0A;
+            --paper: #FEFDFB;
+            --accent: #FF3D00;
+            --muted: #6B6B6B;
+            --success: #00C853;
+            --highlight: #FFE082;
+            --gradient-warm: linear-gradient(135deg, #FF6B35 0%, #FF3D00 100%);
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--ink);
+            background: var(--paper);
+            overflow-x: hidden;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: -1;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(10, 10, 10, 0.03) 35px, rgba(10, 10, 10, 0.03) 70px);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: var(--paper);
+            z-index: 100;
+            border-bottom: 2px solid var(--ink);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            color: var(--ink);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '●';
+            color: var(--accent);
+            position: absolute;
+            right: -20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .nav-cta {
+            background: var(--gradient-warm);
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 61, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(56px, 10vw, 120px);
+            line-height: 0.95;
+            letter-spacing: -1px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .accent-text {
+            color: var(--accent);
+            display: inline-block;
+            transform: rotate(-2deg);
+            position: relative;
+            margin-bottom: 14px;  /* Add this line */
+        }
+
+        .accent-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            animation: underline 0.8s ease-out 0.5s forwards;
+        }
+
+        @keyframes underline {
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: var(--muted);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .stat {
+            position: relative;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--ink);
+            color: var(--paper);
+            padding: 20px 40px;
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-warm);
+            transition: left 0.3s ease;
+        }
+
+        .hero-cta span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-cta:hover::before {
+            left: 0;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .visual-card {
+            background: white;
+            border: 2px solid var(--ink);
+            padding: 30px;
+            position: relative;
+            transform: rotate(2deg);
+            box-shadow: 10px 10px 0 var(--ink);
+        }
+
+        .visual-card::before {
+            content: 'LIVE';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .guest-preview {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .guest-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-warm);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: white;
+        }
+
+        .guest-info h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .guest-info p {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .recording-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .rec-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: recording 1.5s infinite;
+        }
+
+        @keyframes recording {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--paper) 0%, #F5F5F5 100%);
+            position: relative;
+        }
+
+        .problem::before {
+            content: 'THE PROBLEM';
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-90deg);
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--muted);
+            opacity: 0.3;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .problem-card {
+            text-align: center;
+            opacity: 0;
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .problem-card:nth-child(1) { animation-delay: 0.1s; }
+        .problem-card:nth-child(2) { animation-delay: 0.2s; }
+        .problem-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .problem-icon {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 72px;
+            color: var(--muted);
+            margin-bottom: 20px;
+            display: inline-block;
+            transform: rotate(-5deg);
+        }
+
+        .problem-stat {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .problem-label {
+            font-size: 18px;
+            color: var(--muted);
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 100px 0;
+            background: var(--ink);
+            color: var(--paper);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: var(--gradient-warm);
+            opacity: 0.1;
+            transform: rotate(45deg);
+        }
+
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(48px, 6vw, 72px);
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .solution-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-warm);
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            line-height: 60px;
+            margin-bottom: 20px;
+            transform: rotate(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .step h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .step p {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--paper);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .feature-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .feature-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .feature-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .feature-visual {
+            background: white;
+            border: 2px solid var(--ink);
+            padding: 40px;
+            position: relative;
+            box-shadow: 15px 15px 0 var(--accent);
+        }
+
+        .metric-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .metric-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 96px;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .metric-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--muted);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFEBE0 100%);
+            position: relative;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--ink);
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            box-shadow: 20px 20px 0 var(--accent);
+        }
+
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 5px 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .pricing-tier {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .pricing-amount {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .pricing-amount sup {
+            font-size: 32px;
+        }
+
+        .pricing-period {
+            font-size: 16px;
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .pricing-cta {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--ink);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured .pricing-cta {
+            background: var(--gradient-warm);
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Testimonial */
+        .testimonial {
+            padding: 100px 0;
+            background: var(--ink);
+            color: var(--paper);
+            text-align: center;
+        }
+
+        .testimonial-quote {
+            font-size: 32px;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            top: -30px;
+            left: -60px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 120px;
+            color: var(--accent);
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 120px 0;
+            background: var(--paper);
+            text-align: center;
+            position: relative;
+        }
+
+        .final-cta h2 {
+            color: var(--ink);
+            margin-bottom: 30px;
+        }
+
+        .final-cta-subtitle {
+            font-size: 24px;
+            color: var(--muted);
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: var(--gradient-warm);
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 61, 0, 0.3);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--ink);
+            border: 2px solid var(--ink);
+            padding: 18px 38px;
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #FFF8F3 0%, #FFEBE0 100%);
+        }
+
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid var(--ink);
+            padding: 50px;
+            box-shadow: 20px 20px 0 var(--accent);
+        }
+
+        .contact-form-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--ink);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: var(--ink);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--ink);
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            background: var(--paper);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 61, 0, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 20px;
+            background: var(--gradient-warm);
+            color: white;
+            border: none;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 61, 0, 0.3);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            display: none;
+        }
+
+        .form-message.success {
+            background: var(--success);
+            color: white;
+            display: block;
+        }
+
+        .form-message.error {
+            background: var(--accent);
+            color: white;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: var(--ink);
+            color: var(--paper);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .problem-grid,
+            .solution-steps {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            h1 {
+                font-size: clamp(56px, 12vw, 120px);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            /* Keep header button centered */
+            .nav-cta {
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">PodcastPipeline</a>
+            <a href="#contact" class="nav-cta">Get Started - $2,497/mo</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1>
+                        Turn Your<br>
+                        <span class="accent-text">Dream Prospects</span><br>
+                        Into Podcast Guests
+                    </h1>
+                    <p class="hero-subtitle">
+                        Build authority and grow your network. Start having warm, meaningful conversations with the founders, leaders and operators driving your industry forward.                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">68%</div>
+                            <div class="stat-label">Accept Rate</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">10x</div>
+                            <div class="stat-label">vs Cold Email</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">14 Days</div>
+                            <div class="stat-label">To first booked guest</div>
+                        </div>
+                    </div>
+                    <a href="#contact" class="hero-cta">
+                        <span>Book Your First Industry Leader→</span>
+                    </a>
+                </div>
+                <div class="hero-visual">
+                    <div class="visual-card">
+                        <div class="guest-preview">
+                            <div class="guest-avatar">JD</div>
+                            <div class="guest-info">
+                                <h3>Jane Davidson</h3>
+                                <p>CHRO at Fortune 500</p>
+                            </div>
+                        </div>
+                        <div class="guest-preview">
+                            <div class="guest-avatar">MS</div>
+                            <div class="guest-info">
+                                <h3>Michael Stone</h3>
+                                <p>VP Sales at TechCorp</p>
+                            </div>
+                        </div>
+                        <div class="recording-indicator">
+                            <div class="rec-dot"></div>
+                            <span style="font-family: 'Space Mono', monospace; font-size: 14px;">Recording in Progress</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container">
+            <h2>Cold Outreach Is Broken — But Relationships Still Win</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">✉</div>
+                    <div class="problem-stat">2-3%</div>
+                    <div class="problem-label">Cold Email Response Rate</div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📞</div>
+                    <div class="problem-stat">97%</div>
+                    <div class="problem-label">Cold Calls Ignored</div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">💰</div>
+                    <div class="problem-stat">$1,000</div>
+                    <div class="problem-label">Cost Per Meeting Booked</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <h2>The Psychology is Simple: People Love Being Experts</h2>
+            <div class="solution-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>We Research</h3>
+                    <p>Identify your top dream prospects and the leaders shaping your industry.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>We Invite</h3>
+                    <p>Position them as industry thought leaders worth featuring — not as prospects.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>You Connect</h3>
+                    <p>You host authentic, meaningful conversations that build trust, credibility, and real relationships.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Momentum Builds</h3>
+                    <p>These relationships naturally evolve into partnerships, opportunities, and warm pipeline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-content">
+                    <h3>We Handle Everything</h3>
+                    <p>You literally just show up for conversations. We manage the entire process from guest research to final production.</p>
+                    <ul class="feature-list">
+                        <li>Strategic guest research & vetting</li>
+                        <li>Done-for-you outreach & scheduling</li>
+                        <li>Full episode scripting & guided question framework</li>
+                        <li>Calendar coordination</li>
+                        <li>Professional editing & production</li>
+                        <li>10-20 repurposed content assets per episode</li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <div class="metric-display">
+                        <div class="metric-number">2H/MONTH</div>
+                        <div class="metric-label">From You</div>
+                    </div>
+                    <div class="metric-display">
+                        <div class="metric-number">14</div>
+                        <div class="metric-label">Days to First Guest</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="pricing-tier">Foundation</div>
+                    <div class="pricing-amount"><sup>$</sup>2,497</div>
+                    <div class="pricing-period">per month</div>
+                    <ul class="pricing-features">
+                        <li>2 episodes/month</li>
+                        <li>5 guest targets researched</li>
+                        <li>3 clips per episode</li>
+                        <li>Basic reporting</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Start Small</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-tier">Growth</div>
+                    <div class="pricing-amount"><sup>$</sup>3,997</div>
+                    <div class="pricing-period">per month</div>
+                    <ul class="pricing-features">
+                        <li>4 episodes/month</li>
+                        <li>20 guest targets researched</li>
+                        <li>5 clips per episode</li>
+                        <li>LinkedIn outreach management</li>
+                        <li>Monthly strategy calls</li>
+                        <li>Attribution reporting</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Most Popular</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-tier">Scale</div>
+                    <div class="pricing-amount"><sup>$</sup>6,497</div>
+                    <div class="pricing-period">per month</div>
+                    <ul class="pricing-features">
+                        <li>6 episodes/month</li>
+                        <li>100 guest targets researched</li>
+                        <li>10 clips per episode</li>
+                        <li>Dedicated account manager</li>
+                        <li>Quarterly business reviews</li>
+                        <li>Multi-channel distribution</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Scale Fast</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial">
+        <div class="container">
+            <p class="testimonial-quote">
+                "Cold outreach fills your calendar. It doesn't build your 
+                category position.
+                
+                When you invite 50 industry leaders per year to share their 
+                expertise, you're not just booking meetings — you're building 
+                a network of advocates.
+                
+                Some become customers. All become relationships that compound."
+            </p>
+<!--             <p class="testimonial-author">— Julian Melanson, CEO of PodcastPipeline</p>
+ -->        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>Your Competitors Are Still Cold Calling</h2>
+            <p class="final-cta-subtitle">
+                While they chase a 2% response rate, you'll be having strategic conversations with decision makers who already know and trust you.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-primary">Book a Strategy Call</a>
+                <a href="#contact" class="cta-secondary">See Sample Episode</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-form-section" id="contact">
+        <div class="container">
+            <div class="contact-form-container">
+                <h2>Get Started Today</h2>
+                <form id="contactForm" netlify aria-label="Contact form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="plan">Interested Plan</label>
+                        <select id="plan" name="plan">
+                            <option value="">Select a plan</option>
+                            <option value="foundation">Foundation - $2,497/mo</option>
+                            <option value="growth">Growth - $3,997/mo</option>
+                            <option value="scale">Scale - $6,497/mo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about your goals</label>
+                        <textarea id="message" name="message" rows="5" placeholder="What are you hoping to achieve with podcast guest booking?"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Submit Request</button>
+                    <div class="form-message" id="formMessage" role="alert"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PodcastPipeline. Building category authority through strategic conversations.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.problem-card, .step, .pricing-card').forEach(el => {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        });
+
+        // Dynamic number animation
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.textContent = Math.floor(progress * (end - start) + start) + '%';
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Animate stats when they come into view
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.dataset.animated = 'true';
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber && statNumber.textContent.includes('%')) {
+                        const value = parseInt(statNumber.textContent);
+                        animateValue(statNumber, 0, value, 1500);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat').forEach(el => {
+            statsObserver.observe(el);
+        });
+
+        // CTA button tracking
+        document.querySelectorAll('.hero-cta, .nav-cta, .pricing-cta, .cta-primary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                console.log('CTA clicked:', this.textContent);
+                // Track with Google Analytics if configured
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'click', {
+                        'event_category': 'CTA',
+                        'event_label': this.textContent.trim()
+                    });
+                }
+            });
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitButton = this.querySelector('.form-submit');
+                const originalText = submitButton.textContent;
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+                formMessage.className = 'form-message';
+                formMessage.style.display = 'none';
+
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    company: document.getElementById('company').value,
+                    plan: document.getElementById('plan').value,
+                    message: document.getElementById('message').value
+                };
+
+                try {
+                    // Using Netlify Forms - automatically handles form submissions
+                    // Form submissions will appear in your Netlify dashboard
+                    const formDataToSubmit = new FormData(contactForm);
+                    
+                    const response = await fetch('/', {
+                        method: 'POST',
+                        body: formDataToSubmit
+                    });
+
+                    if (response.ok) {
+                        formMessage.textContent = 'Thank you! We\'ll be in touch within 24 hours.';
+                        formMessage.className = 'form-message success';
+                        formMessage.style.display = 'block';
+                        contactForm.reset();
+                        
+                        // Track form submission
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'form_submit', {
+                                'event_category': 'Contact',
+                                'event_label': 'Contact Form'
+                            });
+                        }
+
+                        // Scroll to message
+                        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+
+                } catch (error) {
+                    formMessage.textContent = 'Something went wrong. Please email us directly or try again.';
+                    formMessage.className = 'form-message error';
+                    formMessage.style.display = 'block';
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+                }
+            });
+        }
+
+        // Improve accessibility: Skip to main content link
+        const skipLink = document.createElement('a');
+        skipLink.href = '#main-content';
+        skipLink.textContent = 'Skip to main content';
+        skipLink.className = 'skip-link';
+        skipLink.style.cssText = 'position: absolute; left: -9999px; z-index: 999; padding: 1em; background: var(--accent); color: white; text-decoration: none;';
+        skipLink.addEventListener('focus', function() {
+            this.style.left = '0';
+        });
+        skipLink.addEventListener('blur', function() {
+            this.style.left = '-9999px';
+        });
+        document.body.insertBefore(skipLink, document.body.firstChild);
+    </script>
+</body>
+</html>
